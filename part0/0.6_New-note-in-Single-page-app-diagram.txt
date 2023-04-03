@@ -1,0 +1,44 @@
+title New note in Single page app
+
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+Server-->Browser: HTML-code
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Server-->Browser: main.css
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+Server-->Browser: spa.js
+
+note over Browser:
+Browser starts executing js-code
+that requests JSON data from server 
+end note
+
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+Server-->Browser: [{"content":"","date":"2023-04-02T14:51:57.008Z"}, ...]
+
+note over Browser:
+Browser executes the event handler
+that renders notes to display
+end note
+
+note over Browser
+The user creates a new note and
+presses the save button.
+
+The code associated with the event.
+it triggers:
+the list is updated with the new note,
+and then it is sent to the server.
+end note
+
+Browser->Server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
+note over Server
+The server responds with HTTP status
+code 201 (created).
+
+The server does not ask for a redirect,
+the browser stays on the same page,
+and it sends no further HTTP requests.
+end note
+
+Server-->Browser: HTTP status code 201 created
