@@ -15,15 +15,21 @@ const Content=(props)=>{
 
   const courseContent=props.contents.map((cont,index)=>{
     return(
-      <p key={index}>
-        {cont.part} {cont.exercise}
-      </p>
+      <Part key={index} part={cont.part} exercise={cont.exercise}/>
     )
   })
 
   return (
     <>
       {courseContent}
+    </>
+  );
+}
+
+const Part=(props)=>{
+  return(
+    <>
+      <p>{props.part} {props.exercise}</p>
     </>
   );
 }
